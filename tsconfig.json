@@ -8,5 +8,5 @@
     "strict": true,
     "outDir": "dist"
   },
-  "exclude": ["**/*.test.*", "**/test"]
+  "exclude": ["**/*.test.*", "**/test", "jest.config.ts"]
 }

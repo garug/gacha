@@ -1,0 +1,10 @@
+.editorconfig
+.gitignore
+.idea
+.vscode
+.prettiererc.json
+eslint.config.mjs
+lib
+jest.config.ts
+main.ts
+tsconfig.json
