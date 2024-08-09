@@ -1,6 +1,6 @@
 {
   "name": "@garug/gacha",
-  "version": "1.0.0-alpha",
+  "version": "1.0.2-alpha",
   "description": "A versatile gacha system library for managing summons and probabilities in your applications",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -25,12 +25,15 @@
     "url": "https://github.com/garug/gacha/issues"
   },
   "homepage": "https://github.com/garug/gacha#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@jest/globals": "^29.7.0",
     "chance": "^1.1.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@jest/globals": "^29.7.0",
     "@types/chance": "^1.1.6",
     "eslint": "9.x",
     "globals": "^15.9.0",

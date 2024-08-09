@@ -3,8 +3,11 @@
 .idea
 .vscode
 .prettiererc.json
+.yarn
+.yarnrc.yml
 eslint.config.mjs
 lib
 jest.config.ts
 main.ts
 tsconfig.json
+test
