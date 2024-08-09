@@ -1,6 +1,6 @@
 {
   "name": "@garug/gacha",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "A versatile gacha system library for managing summons and probabilities in your applications",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
