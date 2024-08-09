@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "declaration": true,
+    "target": "ESNext",
     "module": "CommonJS",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
-  }
+    "strict": true,
+    "outDir": "dist"
+  },
+  "exclude": ["**/*.test.*", "**/test"]
 }
