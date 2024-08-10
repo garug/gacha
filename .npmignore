@@ -6,7 +6,7 @@
 .yarn
 .yarnrc.yml
 eslint.config.mjs
-lib
+/lib
 jest.config.ts
 main.ts
 tsconfig.json
