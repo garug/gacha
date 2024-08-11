@@ -1,16 +1,17 @@
-import type { ItemInputRarity, ItemWithProbability, RarityInput } from "./types";
-import { groupByRarity } from "./groupByRarity";
+import type {
+  GroupedByRarity,
+  ItemWithProbability,
+  RarityInput,
+} from "./types";
 import { itemsWithProbabilities } from "./itemsWithProbability";
 
-export function itemsWithRarities<T extends ItemInputRarity>(
-  items: T[],
+export function itemsWithRarities<T>(
+  items: GroupedByRarity<T>,
   rarities: RarityInput[],
 ) {
-  const itemsByRarity = groupByRarity(items);
-
   const itemsWeight = rarities.reduce(
     (acc, e) => {
-      const itemsWithRarity = itemsByRarity[e.name] || [];
+      const itemsWithRarity = items[e.name] || [];
       const probability = e.probability / itemsWithRarity.length;
       const itensWithProbability = itemsWithRarity.map((i) => ({
         ...i,

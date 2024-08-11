@@ -7,17 +7,40 @@ export type RarityInput = {
   probability: number;
 };
 
-export type PoolOptionsProbability<T> = {
-  items: (T & { probability: number })[];
-};
+type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 
-export type PoolOptionsRarity<T> = {
-  items: (T & ItemInputRarity)[];
-  rarities: RarityInput[];
-};
+export type GroupedByRarity<T> = { [key: string]: T[] };
 
-export type PoolOptions<T> = {
+type DefaultPoolOptions<T> = {
   items: T[];
   seed?: string;
   addWeight?: boolean;
-} & (PoolOptionsRarity<T> | PoolOptionsProbability<T>);
+};
+
+export type PoolOptionsProbability<T> = Overwrite<
+  DefaultPoolOptions<T>,
+  {
+    items: (T & { probability: number })[];
+  }
+>;
+
+export type PoolOptionsRarity<T> = Overwrite<
+  DefaultPoolOptions<T>,
+  {
+    items: (T & ItemInputRarity)[];
+    rarities: RarityInput[];
+  }
+>;
+
+export type PoolOptionsRaritySet<T> = Overwrite<
+  DefaultPoolOptions<T>,
+  {
+    items: GroupedByRarity<T>;
+    rarities: RarityInput[];
+  }
+>;
+
+export type PoolOptions<T> =
+  | PoolOptionsProbability<T>
+  | PoolOptionsRarity<T>
+  | PoolOptionsRaritySet<T>;
