@@ -40,6 +40,8 @@ jobs:
     needs: build
     steps:
       - uses: actions/download-artifact@v4
+        with:
+          name: artifact
       - uses: actions/setup-node@v4
         with:
           registry-url: https://registry.npmjs.org
@@ -52,6 +54,5 @@ jobs:
           registry-url: https://npm.pkg.github.com
       - name: publish on github
         run: npm publish
-        working-directory: artifact
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
