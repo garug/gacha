@@ -17,6 +17,8 @@ jobs:
           cache: yarn
       - name: install dependencies
         run: yarn install
+      - name: tsc
+        run: yarn build
   test:
     runs-on: ubuntu-latest
     needs: build
