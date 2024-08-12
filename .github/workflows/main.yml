@@ -49,8 +49,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: actions/setup-node@v4
         with:
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: https://npm.pkg.github.com
       - name: publish on github
         run: npm publish
+        working-directory: artifact
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
