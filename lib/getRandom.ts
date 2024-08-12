@@ -13,7 +13,7 @@ export function getRandom<T>(options: PoolOptions<T>): T | (T & { weight: number
 
   const itemWithWeight = data.items.find((e) => sortedNumber <= e.weight);
 
-  const result = itemWithWeight!;
+  const result = itemWithWeight || data.items.at(-1)!;
 
   if (options.addWeight) return result;
 
