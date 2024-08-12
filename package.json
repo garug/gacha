@@ -4,7 +4,6 @@
   "description": "A versatile gacha system library for managing summons and probabilities in your applications",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "packageManager": "yarn@4.4.0",
   "scripts": {
     "build": "tsc",
     "test": "jest",
