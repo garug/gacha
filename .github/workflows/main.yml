@@ -17,12 +17,6 @@ jobs:
           cache: yarn
       - name: install dependencies
         run: yarn install
-      - name: tsc
-        run: yarn build
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: run tests
         run: yarn test --coverage
       - name: upload coverage reports to codecov
@@ -32,3 +26,12 @@ jobs:
           files: ./coverage/**/lcov.info
           name: code-coverage
           fail_ci_if_error: true
+      - name: tsc
+        run: yarn build
+      - name: generate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: |
+            dist/
+            README.md
+            package.json    
