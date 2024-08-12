@@ -22,4 +22,14 @@ describe("generateRandom", () => {
 
     expect(firstResult).not.toEqual(result);
   });
+
+  it("should return when seed its not provided", () => {
+    expect(() => getRandom({ items })).not.toThrow();
+  });
+
+  it("should return weight on items when options is true", () => {
+    const result = getRandom({ items, addWeight: true });
+
+    expect("weight" in result).toBe(true);
+  });
 });

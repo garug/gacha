@@ -1,13 +1,9 @@
 import type { PoolOptions } from "./types";
 import { Chance } from "chance";
-import { itemsWithRarities } from "./itemsWithRarity";
-import { itemsWithProbabilities } from "./itemsWithProbability";
-import { optionsHasRarities } from "./optionsHasRarities";
+import { getItems } from "./getItems";
 
 export function getRandom<T>(options: PoolOptions<T>): T | (T & { weight: number }) {
-  const data = optionsHasRarities(options)
-               ? itemsWithRarities(options.items, options.rarities)
-               : itemsWithProbabilities(options.items);
+  const data = getItems(options);
 
   const seed = options.seed || Math.random() * 10000;
 
