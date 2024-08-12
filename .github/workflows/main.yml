@@ -36,6 +36,7 @@ jobs:
             README.md
             package.json
   publish:
+    name: publish on npm
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -56,3 +57,18 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-github:
+    name: publish on github
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://npm.pkg.github.com
+      - name: publish on github
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GARUG_TOKEN }}
