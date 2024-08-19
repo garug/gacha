@@ -1,0 +1,82 @@
+name: CI/CD pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version-changed: ${{ steps.version-check.outputs.changed }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: set up node
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+      - name: install dependencies
+        run: yarn install
+      - uses: EndBug/version-check@v2
+        id: version-check
+      - name: run tests
+        run: yarn test --coverage
+      - name: upload coverage reports to codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/**/lcov.info
+          name: code-coverage
+          fail_ci_if_error: true
+      - name: tsc
+        if:  steps.version-check.outputs.changed == 'true'
+        run: yarn build
+      - name: generate artifact
+        if:  steps.version-check.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          path: |
+            dist/
+            README.md
+            package.json  
+  publish:
+    name: publish on npm
+    if: needs.build.outputs.version-changed == 'true'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org
+      - name: publish on npmjs
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://npm.pkg.github.com
+      - name: publish on github
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-github:
+    name: publish on github
+    if: needs.build.outputs.version-changed == 'true'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://npm.pkg.github.com
+      - name: publish on github
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GARUG_TOKEN }}

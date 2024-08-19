@@ -1,10 +1,9 @@
 {
   "name": "@garug/gacha",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "A versatile gacha system library for managing summons and probabilities in your applications",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "packageManager": "yarn@4.4.0",
   "scripts": {
     "build": "tsc",
     "test": "jest",
@@ -16,6 +15,7 @@
   },
   "keywords": [
     "javascript",
+    "typescript",
     "gacha",
     "random"
   ],

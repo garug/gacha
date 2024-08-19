@@ -1,5 +1,7 @@
 # Garug's Gacha
 
+[![codecov](https://codecov.io/github/garug/gacha/graph/badge.svg?token=7N7YRD1OKA)](https://codecov.io/github/garug/gacha)
+
 ## Description
 
 This repository contains a comprehensive Gacha System designed to simulate the mechanics commonly found in many popular mobile and online games. The system allows users to "pull" for items or characters, which are distributed based on predefined probabilities. This project aims to provide a flexible and extensible framework for developers looking to integrate a gacha mechanic into their applications.
