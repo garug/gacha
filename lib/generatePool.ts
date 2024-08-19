@@ -1,15 +1,15 @@
 import { getItems } from "./getItems";
-import { PoolOptions, PoolResponse } from "./types";
+import { PoolOptions } from "./types";
 import { random } from "./random";
 
-export function generatePool<T>(options: PoolOptions<T>): PoolResponse<T> {
+export function generatePool<T>(options: PoolOptions<T>) {
   const data = getItems(options);
 
   const seed = options.seed || String(Math.random() * 10000);
 
   let index = options.index || 0;
 
-  function exportedRandom(): PoolResponse<T> {
+  function exportedRandom() {
     const result = random({ index: index++, seed, data });
 
     if (options.addWeight)
