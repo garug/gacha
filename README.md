@@ -77,7 +77,7 @@ const pool_c = generatePool({ items: [...items_a, ...items_b], rarities });
 After a pool is created, just call `random` function to get a item
 
 ```typescript
-const item = pool.random();
+const { item } = pool.random();
 ```
 
 ## How to Contribute
