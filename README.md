@@ -1,6 +1,7 @@
 # Garug's Gacha
 
 [![codecov](https://codecov.io/github/garug/gacha/graph/badge.svg?token=7N7YRD1OKA)](https://codecov.io/github/garug/gacha)
+[![npm version](https://badge.fury.io/js/@garug%2Fgacha.svg)](https://badge.fury.io/js/@garug%2Fgacha)
 
 ## Description
 
