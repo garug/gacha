@@ -15,7 +15,7 @@ describe("generateRandom", () => {
     expect(firstResult).toEqual(result);
   });
 
-  it("shoudl return different element with for different seed", () => {
+  it("should return different element with for different seed", () => {
     const firstResult = getRandom({ items, seed: "my-seed" });
 
     const result = getRandom({ items, seed: "another-seed" });

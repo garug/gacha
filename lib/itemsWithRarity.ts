@@ -13,11 +13,11 @@ export function itemsWithRarities<T>(
     (acc, e) => {
       const itemsWithRarity = items[e.name] || [];
       const probability = e.probability / itemsWithRarity.length;
-      const itensWithProbability = itemsWithRarity.map((i) => ({
+      const itemsWithProbability = itemsWithRarity.map((i) => ({
         ...i,
         probability,
       }));
-      return [...acc, ...itensWithProbability];
+      return [...acc, ...itemsWithProbability];
     },
     [] as (ItemWithProbability & T)[],
   );
