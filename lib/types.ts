@@ -44,3 +44,7 @@ export type PoolOptions<T> =
   | PoolOptionsProbability<T>
   | PoolOptionsRarity<T>
   | PoolOptionsRaritySet<T>;
+
+export type Pool<T> = {
+  random: () => T;
+};
